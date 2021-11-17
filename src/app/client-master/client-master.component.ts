@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from '../client';
 import {ClientServiceService} from "../services/client-service.service";
 @Component({
@@ -8,7 +9,21 @@ import {ClientServiceService} from "../services/client-service.service";
 })
 export class ClientMasterComponent implements OnInit {
 
-  constructor(private cls:ClientServiceService) { }
+  clientFormGroup!: FormGroup;
+
+  constructor(private cls:ClientServiceService,private formBuilder: FormBuilder) {
+
+    this.clientFormGroup = this.formBuilder.group(
+      {
+        companyName: new FormControl('',[Validators.required,Validators.pattern("[A-Z a-z]{5,20}")]),
+        PAN: new FormControl('',[Validators.required,Validators.pattern("[A-Z]{5}[0-9]{4}[A-Z]{1}")]),
+        groupCompany: new FormControl(''),
+        PrecisionId: new FormControl(''),
+        approver: new FormControl('',[Validators.required,Validators.email]),
+      }
+    );
+
+   }
   client_collection!:any;
 
   ngOnInit(): void {
@@ -40,9 +55,9 @@ export class ClientMasterComponent implements OnInit {
   saveClient(){
     this.submitted=true;
 
-    console.log(this.client);
+    console.log(this.clientFormGroup.value);
 
-    this.cls.postClient(this.client).subscribe((result)=>{
+    this.cls.postClient(this.clientFormGroup.value).subscribe((result)=>{
       console.warn("result is here",result);
       this.ngOnInit();
       window.location.reload();

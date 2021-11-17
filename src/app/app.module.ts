@@ -14,7 +14,7 @@ import {FileUploadModule} from 'primeng/fileupload';
 import {HttpClientModule} from '@angular/common/http';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FlexLayoutModule } from '@angular/flex-layout';
 import {TableModule} from 'primeng/table';
 
@@ -44,7 +44,8 @@ import {TableModule} from 'primeng/table';
     InputTextModule,
     FormsModule,
     FlexLayoutModule,
-    TableModule
+    TableModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

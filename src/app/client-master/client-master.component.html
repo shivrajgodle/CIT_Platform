@@ -17,44 +17,59 @@
 </div>
 
 
+
+
 <p-dialog [(visible)]="clientDialogue" [style]="{width: '450px'}" header="Client Details" [modal]="true"
   styleClass="p-fluid">
+
   <ng-template pTemplate="content">
 
-    <div class="p-field">
-      <label for="name">Name</label>
-      <input type="text" pInputText id="name" [(ngModel)]="client.companyName" required autofocus />
-      <small class="p-error" *ngIf="submitted && !client?.companyName">Company Name is required.</small>
-    </div>
+    <form [formGroup]="clientFormGroup" (ngSubmit)="saveClient()" autocomplete="off">
 
-    <div class="p-field">
-      <label for="name">Permenant Account Number(PAN)</label>
-      <input type="text" pInputText id="pan" [(ngModel)]="client.PAN" required autofocus />
-      <small class="p-error" *ngIf="submitted && !client?.PAN">PAN is required.</small>
-    </div>
+      <div class="p-field">
+        <label for="name">Name</label>
+        <input type="text" pInputText id="name" formControlName="companyName" />
 
-    <div class="p-field">
-      <label for="name">Group Company</label>
-      <input type="text" pInputText id="grp_company" [(ngModel)]="client.groupCompany" autofocus />
-    </div>
+      </div>
 
-    <div class="p-field">
-      <label for="name">Precision id</label>
-      <input type="text" pInputText id="precision_id" [(ngModel)]="client.PrecisionId" autofocus />
-    </div>
+      <div class="p-field">
+        <label for="name">Permenant Account Number(PAN)</label>
+        <input type="text" pInputText id="pan" formControlName="PAN" />
 
-    <div class="p-field">
-      <label for="name">Approver</label>
-      <input type="text" pInputText id="approver" [(ngModel)]="client.approver" required autofocus />
-      <small class="p-error" *ngIf="submitted && !client?.approver">Approver is required.</small>
-    </div>
+      </div>
+
+      <div class="p-field">
+        <label for="name">Group Company</label>
+        <input type="text" pInputText id="grp_company" formControlName="groupCompany" />
+      </div>
+
+      <div class="p-field">
+        <label for="name">Precision id</label>
+        <input type="text" pInputText id="precision_id" formControlName="PrecisionId" />
+      </div>
+
+      <div class="p-field">
+        <label for="name">Approver</label>
+        <input type="text" pInputText id="approver" formControlName="approver" />
+
+      </div>
+
+      <!-- </ng-template>
+
+  <ng-template pTemplate="footer"> -->
+      <div>
+        <button style="float: left ; width: 90px;" pButton pRipple label="Cancel" icon="pi pi-times"
+          class="p-button-text" (click)="hideDialog()"></button>
+        <button style="float: right ; width: 90px;" [disabled]="clientFormGroup.invalid" pButton pRipple label="Save"
+          icon="pi pi-check" class="p-button-text"></button>
+
+      </div>
+
+    </form>
   </ng-template>
-  <ng-template pTemplate="footer">
-    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-    <button pButton pRipple label="Save"  icon="pi pi-check" class="p-button-text"
-      (click)="saveClient()"></button>
-  </ng-template>
+
 </p-dialog>
+
 
 
 <p-table #dt [value]="client_collection" [rows]="3" [paginator]="true"

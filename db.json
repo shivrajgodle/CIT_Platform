@@ -3,7 +3,7 @@
     {
       "id": 1,
       "companyName": "Meta",
-      "PAN": "ABCDdw5623G",
+      "PAN": "FSASD7895F",
       "groupCompany": "instagram",
       "PrecisionId": "M14636",
       "approver": "pwc13@gmail.com"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "companyName": "Cypert",
-      "PAN": "ABCGT3623G",
+      "PAN": "FSATD2675F",
       "groupCompany": "PWC Global",
       "PrecisionId": "C15656",
       "approver": "pwc13@gmail.com"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "companyName": "Metamagic",
-      "PAN": "ABCDdw5623G",
+      "PAN": "FSASD7845F",
       "groupCompany": "Google",
       "PrecisionId": "C14636",
       "approver": "pwc13@gmail.com"
@@ -27,20 +27,27 @@
     {
       "id": 4,
       "companyName": "TCS",
-      "PAN": "AFESF7223G",
+      "PAN": "FSASD2895F",
       "groupCompany": "PWC Global",
       "PrecisionId": "C14256",
       "approver": "pwc13@gmail.com"
     },
     {
       "companyName": "Infeanet digital marketing solution",
-      "PAN": "sdfs44643",
+      "PAN": "FSASD7345F",
       "groupCompany": "Quickyes zholzhal pvt ltd",
       "PrecisionId": "fdf45455",
       "approver": "pwc@gmail.com",
       "id": 5
+    },
+    {
+      "companyName": "QConnect",
+      "PAN": "FSASD2345F",
+      "groupCompany": "Harwars",
+      "PrecisionId": "sadsd34",
+      "approver": "pwc@gmail.com",
+      "id": 6
     }
-
   ],
   "comments": [
     {
