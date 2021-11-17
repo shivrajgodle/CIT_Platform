@@ -1,0 +1,40 @@
+<div class="side_nav" style="background-color: crimson;">
+  <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+
+    <header>
+      <h2>Welcome, Admin&nbsp;<i class="pi pi-user" style="font-size: 50px;"></i></h2>
+    </header>
+    <hr>
+    <h3 style="font-weight:normal">
+      <i class="pi pi-users" style="font-size: 20px;"></i>
+      <a style="text-decoration: none;" (click)="visibleSidebar1 = false" routerLink="/client_master"> Client Master</a>
+    </h3>
+    <h3 style="font-weight:normal">
+      <i class="pi pi-desktop" style="font-size: 20px; "></i>
+      <a style="text-decoration: none;" (click)="visibleSidebar1 = false" routerLink="/my_workspace"> My WorkSpaces</a>
+    </h3>
+    <h3 style="font-weight:normal">
+      User Management
+    </h3>
+    <h3 style="font-weight:normal">
+      Tax Rate Master
+    </h3>
+    <h3 style="font-weight:normal">
+      Currency Master
+    </h3>
+    <h3 style="font-weight:normal">
+      Checklist Config
+    </h3>
+    <h3 style="font-weight:normal">
+      Rule Generator
+    </h3>
+    <h3 style="font-weight:normal">
+      Account Settings
+    </h3>
+
+  </p-sidebar>
+
+  <p-button style="float: right; margin-top: -50px; margin-right: 10px; color: darkgoldenrod;" type="button"
+    (click)="visibleSidebar1 = true" icon="pi pi-bars">
+  </p-button>
+</div>

@@ -1,0 +1,118 @@
+<header>
+  <h3>Client Creation</h3>
+</header>
+
+<div class="card">
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="Add Client" icon="pi pi-plus" (click)="addClient()"
+        class="p-button-success p-mr-2"></button>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+      <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Upload" chooseLabel="Bulk Upload"
+        class="p-mr-2 p-d-inline-block"></p-fileUpload>
+    </ng-template>
+  </p-toolbar>
+</div>
+
+
+<p-dialog [(visible)]="clientDialogue" [style]="{width: '450px'}" header="Client Details" [modal]="true"
+  styleClass="p-fluid">
+  <ng-template pTemplate="content">
+
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input type="text" pInputText id="name" [(ngModel)]="client.companyName" required autofocus />
+      <small class="p-error" *ngIf="submitted && !client?.companyName">Company Name is required.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="name">Permenant Account Number(PAN)</label>
+      <input type="text" pInputText id="pan" [(ngModel)]="client.PAN" required autofocus />
+      <small class="p-error" *ngIf="submitted && !client?.PAN">PAN is required.</small>
+    </div>
+
+    <div class="p-field">
+      <label for="name">Group Company</label>
+      <input type="text" pInputText id="grp_company" [(ngModel)]="client.groupCompany" autofocus />
+    </div>
+
+    <div class="p-field">
+      <label for="name">Precision id</label>
+      <input type="text" pInputText id="precision_id" [(ngModel)]="client.PrecisionId" autofocus />
+    </div>
+
+    <div class="p-field">
+      <label for="name">Approver</label>
+      <input type="text" pInputText id="approver" [(ngModel)]="client.approver" required autofocus />
+      <small class="p-error" *ngIf="submitted && !client?.approver">Approver is required.</small>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save"  icon="pi pi-check" class="p-button-text"
+      (click)="saveClient()"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-table #dt [value]="client_collection" [rows]="3" [paginator]="true"
+  [globalFilterFields]="['companyName','PAN','groupCompany','approver']" [rowHover]="true" dataKey="id"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+  <ng-template pTemplate="caption">
+    <div class="p-d-flex p-ai-center p-jc-between">
+      <h5 class="p-m-0">Manage Products</h5>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+          placeholder="Search..." />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">
+
+      </th>
+      <th pSortableColumn="companyName">Company Name <p-sortIcon field="companyName"></p-sortIcon>
+      </th>
+      <th pSortableColumn="PAN">Permenant Account Number (PAN) <p-sortIcon field="PAN"></p-sortIcon>
+      </th>
+      <th pSortableColumn="groupCompany">Group Company <p-sortIcon field="groupCompany"></p-sortIcon>
+      </th>
+      <th pSortableColumn="PrecisionId">Precision Id <p-sortIcon field="PrecisionId"></p-sortIcon>
+      </th>
+      <th pSortableColumn="approver">Approver <p-sortIcon field="approver"></p-sortIcon>
+      </th>
+
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-client_collection>
+    <tr>
+      <td>
+
+      </td>
+      <td>{{client_collection.companyName}}</td>
+      <td>{{client_collection.PAN}}</td>
+      <td>{{client_collection.groupCompany}}</td>
+      <td>{{client_collection.PrecisionId}}</td>
+      <td>{{client_collection.approver}}</td>
+      <td>
+        <!-- <p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+      </td>
+      <td>
+        <!-- <span>[class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
+      </td>
+      <td>
+        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="p-d-flex p-ai-center p-jc-between">
+      In total there are {{client_collection ? client_collection.length : 0 }} clients.
+    </div>
+  </ng-template>
+</p-table>
