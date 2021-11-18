@@ -58,10 +58,10 @@
 
   <ng-template pTemplate="footer"> -->
       <div>
-        <button style="float: left ; width: 90px;" pButton pRipple label="Cancel" icon="pi pi-times"
-          class="p-button-text" (click)="hideDialog()"></button>
-        <button style="float: right ; width: 90px;" [disabled]="clientFormGroup.invalid" pButton pRipple label="Save"
-          icon="pi pi-check" class="p-button-text"></button>
+        <button style="float: left ; width: 90px;" pButton pRipple type="button" label="Cancel"
+          class="p-button-danger" (click)="hideDialog()"></button>
+        <button style="float: right ; width: 90px;" [disabled]="clientFormGroup.invalid" pButton pRipple type="button" label="Save"
+          icon="pi pi-check" class="p-button-success"></button>
 
       </div>
 
@@ -121,7 +121,12 @@
         <!-- <span>[class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
       </td>
       <td>
-        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
+        <p-button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="editClient()"></p-button>
+      </td>
+      <td>
+
+       
+        <p-toggleButton [(ngModel)]="checked2" onLabel="Active" offLabel="Deactive" Icon="pi pi-check" offIcon="pi pi-times" [style]="{'width': '10em'}"></p-toggleButton>
       </td>
     </tr>
   </ng-template>

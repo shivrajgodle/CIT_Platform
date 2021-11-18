@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FlexLayoutModule } from '@angular/flex-layout';
 import {TableModule} from 'primeng/table';
 
+import {ToggleButtonModule} from 'primeng/togglebutton';
+
 
 @NgModule({
 
@@ -45,7 +47,8 @@ import {TableModule} from 'primeng/table';
     FormsModule,
     FlexLayoutModule,
     TableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToggleButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

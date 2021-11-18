@@ -10,6 +10,9 @@ import {ClientServiceService} from "../services/client-service.service";
 export class ClientMasterComponent implements OnInit {
 
   clientFormGroup!: FormGroup;
+  checked1: boolean = false;
+
+    checked2: boolean = true;
 
   constructor(private cls:ClientServiceService,private formBuilder: FormBuilder) {
 
@@ -40,18 +43,19 @@ export class ClientMasterComponent implements OnInit {
   clientDialogue?:boolean;
 
   selectedClients!:Client[];
-
+//to open dialog box
   addClient(){
     this.client={};
     this.submitted=false;
     this.clientDialogue=true;
   }
-
+//to hide dialog box
   hideDialog(){
     this.clientDialogue=false;
     this.submitted=false;
   }
 
+  //save client information
   saveClient(){
     this.submitted=true;
 
@@ -64,6 +68,13 @@ export class ClientMasterComponent implements OnInit {
 
     })
 
+  }
+
+//Edit client information
+  editClient(){
+    this.client={};
+    this.submitted=false;
+    this.clientDialogue=true;
   }
 
 
