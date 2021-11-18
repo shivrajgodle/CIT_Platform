@@ -9,13 +9,31 @@ import {ClientServiceService} from "../services/client-service.service";
 })
 export class ClientMasterComponent implements OnInit {
 
-  clientFormGroup!: FormGroup;
-  checked1: boolean = false;
+  //declairation part
 
-    checked2: boolean = true;
+  //form group
+  clientFormGroup!: FormGroup;
+  clientFormGroup2!: FormGroup;
+
+  //for activation part
+  checked1: boolean = false;
+  checked2: boolean = true;
+
+  //variable for fetching data
+  // client_collection:Client[] = [];
+  client_collection:any;
+
+  client!: Client;
+
+  submitted?:boolean;
+  clientDialogue?:boolean;
+  clientEditDialogue?:boolean;
+
+  selectedClients!:Client[];
 
   constructor(private cls:ClientServiceService,private formBuilder: FormBuilder) {
 
+    //form part
     this.clientFormGroup = this.formBuilder.group(
       {
         companyName: new FormControl('',[Validators.required,Validators.pattern("[A-Z a-z]{5,20}")]),
@@ -27,22 +45,27 @@ export class ClientMasterComponent implements OnInit {
     );
 
    }
-  client_collection!:any;
+
+  
 
   ngOnInit(): void {
+
+    //fetching data from service method and display all data here...
+
     this.cls.getClientData().subscribe((result)=>{
-      console.warn(result);
+     
+      console.warn("shivraj",result);
 
       this.client_collection = result;
+      
+      console.log("id is",this.client_collection);
+
+      
 
     })
   }
 
-  client!: Client;
-  submitted?:boolean;
-  clientDialogue?:boolean;
-
-  selectedClients!:Client[];
+ 
 //to open dialog box
   addClient(){
     this.client={};
@@ -59,23 +82,72 @@ export class ClientMasterComponent implements OnInit {
   saveClient(){
     this.submitted=true;
 
-    console.log(this.clientFormGroup.value);
+    if(this.client.companyName?.trim()){
+      if(this.client.id){
+        this.client_collection[this.findIndexById(this.client.id)] = this.client;
 
-    this.cls.postClient(this.clientFormGroup.value).subscribe((result)=>{
-      console.warn("result is here",result);
-      this.ngOnInit();
-      window.location.reload();
+        this.cls.updateClient(this.client.id,this.client).subscribe((result)=>{
 
-    })
+          console.warn("result is here",result);
+    
+        })
+        
+      }
+      else {
+        this.client.id = this.createId();
+        this.client_collection.push(this.client);
+        this.cls.postClient(this.client_collection).subscribe((result)=>{
 
+          console.warn("result is here",result);
+    
+        })
+    }
+
+    this.client_collection = [...this.client_collection];
+    this.clientDialogue = false;
+    this.client = {};
+}
+    
+  
+    //sending data to service file method
+
+   
+
+   
   }
+
+
+  createId(): string {
+    let id = '';
+    var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for ( var i = 0; i < 5; i++ ) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+}
+
 
 //Edit client information
-  editClient(){
-    this.client={};
-    this.submitted=false;
+  editClient(client:Client){
+    this.client={...client};
+    // this.submitted=false;
     this.clientDialogue=true;
+    console.log(client);
+    
   }
+
+  findIndexById(id:string){
+
+    let index = -1;
+    for (let i = 0; i < this.client_collection.length; i++) {
+        if (this.client_collection[i].id === id) {
+            index = i;
+            break;
+        }
+    }
+
+    return index;
+}
 
 
 }

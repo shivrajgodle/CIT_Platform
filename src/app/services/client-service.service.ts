@@ -20,4 +20,8 @@ export class ClientServiceService {
     return this.http.post(this.url,data);
 
   }
+  updateClient(id: any,data: any)
+  {
+    return this.http.put(`${this.url}/${id}`,data);
+  }
 }
