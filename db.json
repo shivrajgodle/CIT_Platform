@@ -1,33 +1,21 @@
 {
   "client": [
-    [
-      {
-        "companyName": "Metamagic",
-        "PAN": "ASDFG1234S",
-        "groupCompany": "Betamagic",
-        "PrecisionId": "asd2134",
-        "approver": "pwc@gmail.com",
-        "id": "XZBkW"
-      }
-    ],
-    [
-      {
-        "companyName": "Metamagic",
-        "PAN": "ASDFG1234S",
-        "groupCompany": "Betamagic",
-        "PrecisionId": "asd213456",
-        "approver": "pwc@gmail.com",
-        "id": "XZBkW"
-      },
-      {
-        "companyName": "Cyperts",
-        "PAN": "ASWER1232A",
-        "groupCompany": "Anemoi",
-        "PrecisionId": "as233df",
-        "approver": "asdf@pwc.com",
-        "id": "pVg5Q"
-      }
-    ]
+    {
+      "companyName": "cyperts",
+      "PAN": "ASF123",
+      "groupCompany": "Anemoi",
+      "PrecisionId": "xsad23456",
+      "approver": "asd@pwc.com",
+      "id": "muCkJ"
+    },
+    {
+      "companyName": "Beta",
+      "PAN": "ASDFG2345S",
+      "groupCompany": "facebook",
+      "PrecisionId": "asd12345",
+      "approver": "AVC@pwc.com",
+      "id": "n9QoH"
+    }
   ],
   "comments": [
     {
